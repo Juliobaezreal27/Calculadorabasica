@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Calculadora Básica</title>
+
+<style>
+body {
+  font-family: sans-serif;
+  display: flex; 
+  justify-content: center; 
+  align-items: center; 
+  min-height: 100vh; 
+  margin: 0; 
+}
+
+.calculator {
+  width: 300px;
+  padding: 20px;
+  border: 10px solid #685b4e;
+  background-color: rgb(218, 105, 40);
+  box-shadow: 5px 5px 5px #ffe4e4;
+}
+
+input[type="text"] {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  box-sizing: border-box;
+  background-color: white;
+  border: 1px solid #ccc;
+}
+
+.buttons { 
+  display: flex; 
+  flex-wrap: wrap; 
+  justify-content: center; 
+}
+
+button {
+  width: 50px;
+  height: 60px;
+  margin: 5px;
+  font-size: 24px;
+  background-color: rgb(255, 255, 255);
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  cursor: pointer;
+  display: flex; 
+  justify-content: center; 
+  align-items: center; 
+}
+
+button:hover {
+  background-color: #d0d0d0;
+}
+
+
+
+</style>
+</head>
+<body>
+
+<div class="calculator">
+  <input type="text" id="display" readonly>
+  <div class="buttons"> 
+    <button onclick="clearDisplay()"class="red-button">C</button> 
+    <button onclick="appendNumber('7')">7</button>
+    <button onclick="appendNumber('8')">8</button>
+    <button onclick="appendNumber('9')">9</button>
+    <button onclick="appendNumber('4')">4</button>
+    <button onclick="appendNumber('5')">5</button>
+    <button onclick="appendNumber('6')">6</button>
+    <button onclick="appendNumber('1')">1</button>
+    <button onclick="appendNumber('2')">2</button>
+    <button onclick="appendNumber('3')">3</button>
+    <button onclick="appendNumber('0')">0</button>
+    <button onclick="appendOperator('.')">.</button>
+    <button onclick="appendOperator('+')">+</button>
+    <button onclick="appendOperator('-')">-</button>
+    <button onclick="appendOperator('*')">*</button>
+    <button onclick="appendOperator('/')">/</button>
+    <button onclick="calculate()">=</button>
+  </div> 
+</div>
+
+<script>
+let display = document.getElementById('display');
+
+function appendNumber(num) {
+  display.value += num;
+}
+
+function appendOperator(op) {
+  display.value += op;
+}
+
+function calculate() {
+  try {
+    display.value = eval(display.value);
+  } catch (error) {
+    display.value = "Erro";
+  }
+}
+
+function clearDisplay() {
+  display.value = '';
+}
+</script>
+
+</body>
+</html>
